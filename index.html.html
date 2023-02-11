@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="countdown.css">
+</head>
+
+
+<body>
+    <div id="wrapper">
+        <h1>Holi countdown</h1>
+        <p></p>
+    </div>
+
+    <div class="holi">
+        <h1>Happy Holi</h1>
+    </div>
+
+    <script>
+
+        let para = document.querySelector("p")
+        let wrapper = document.querySelector("#wrapper")
+        let coutdown = new Date("February 11, 2023  16:27:0").getTime()
+        let stop = setInterval(() => {
+            let now = new Date().getTime()
+            let remainning = coutdown - now
+            let days = Math.floor(remainning / (1000 * 60 * 60 * 24));
+            let hours = Math.floor((remainning % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((remainning % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((remainning % (1000 * 60)) / 1000);
+            para.innerHTML = days + "days " + hours + "hours "
+                + minutes + "minutes " + "and " + seconds + "seconds ";
+
+
+            if (remainning <= 0) {
+                clearInterval(stop)
+                wrapper.style.display="None"
+                document.querySelector(".holi").style.display="flex"
+            }
+        },1000)
+    </script>
+</body>
+
+</html>
